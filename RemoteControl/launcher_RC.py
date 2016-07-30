@@ -16,7 +16,7 @@ from pygame.locals import *
 pygame.init()
 gameClock = pygame.time.Clock()
 
-from LoggerFactory import LogHandler
+import LoggerFactory.LogHandler
 logHandler = LogHandler()
 logger = logHandler.getLogger("Launcher")
 
