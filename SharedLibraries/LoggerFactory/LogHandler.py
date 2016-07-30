@@ -50,5 +50,6 @@ class LogHandler(object):
         """ Returns a specific log instance the caller's name as channel. """
         return logging.getLogger(_name)
 
-if __name__ == '__main__':
-    main()
+def getLogger(_name="")
+    logHandler = LogHandler()
+    return logHandler.getLogger(_name)

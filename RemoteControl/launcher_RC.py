@@ -14,8 +14,7 @@
 import sys
 sys.path.insert(0, '/home/pi/Desktop/DEV/gitdirs/PyDroneCode/SharedLibraries')
 from LoggerFactory import LogHandler 
-logHandler = LogHandler()
-logger = logHandler.getLogger("Launcher")
+logger = LogHandler.getLogger("Launcher")
 
 import pygame
 from pygame.locals import *
