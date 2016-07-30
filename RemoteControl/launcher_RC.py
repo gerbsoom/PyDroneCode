@@ -16,7 +16,7 @@ from pygame.locals import *
 pygame.init()
 gameClock = pygame.time.Clock()
 
-import LoggerFactory
+from LoggerFactory import LogHandler
 logHandler = LogHandler()
 logger = logHandler.getLogger("Launcher")
 
@@ -49,3 +49,6 @@ while running:
     #                                360.0 - gyro["yaw"],
     #                                360.0 - gyro["roll"])
     gameClock.tick(50)
+
+if __name__ == '__main__':
+    main()

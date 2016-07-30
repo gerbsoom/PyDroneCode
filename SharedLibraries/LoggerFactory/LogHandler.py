@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # 
 # This file is part of PyDroneCode.
@@ -48,3 +49,6 @@ class LogHandler(object):
     def getLogger(self, _name=""):
         """ Returns a specific log instance the caller's name as channel. """
         return logging.getLogger(_name)
+
+if __name__ == '__main__':
+    main()
