@@ -36,15 +36,14 @@ while running:
 
     pygame.event.pump()
     # check for keyboard events, maybe allow setting commands from STD_IN
-	keys = pygame.key.get_pressed()
+    keys = pygame.key.get_pressed()
     if keys[K_ESCAPE]:
         running = False
-	
-	# cycle gamepad for button events or relevant throttle value changes
-	#gamepadController.doCycle()
+    # cycle gamepad for button events or relevant throttle value changes
+    #gamepadController.doCycle()
 
     # get the current orientation over network api and update view with it
-	#gyro = sensorSenseHat.getOrientationDegrees()
+    #gyro = sensorSenseHat.getOrientationDegrees()
     #simulator3D.rotateCubeToDegrees(360.0 - gyro["pitch"],
     #                                360.0 - gyro["yaw"],
     #                                360.0 - gyro["roll"])
