@@ -23,7 +23,7 @@ class LogHandler(object):
     """ Tries to read the log configuration from a provided config file
         and defaults otherwise to a simple STDout logging of all levels. """
 
-    def __init__(self, _logConfig="_log.conf"):
+    def __init__(self, _logConfig="./_log.conf"):
 
         self.defaultFormat = "%(asctime)s [%(levelname)s] %(name)s %(message)s"
 
@@ -50,6 +50,6 @@ class LogHandler(object):
         """ Returns a specific log instance the caller's name as channel. """
         return logging.getLogger(_name)
 
-def getLogger(_name="")
-    logHandler = LogHandler()
+def getLogger(_name="", _logConfig="./_log.conf"):
+    logHandler = LogHandler(_logConfig)
     return logHandler.getLogger(_name)
