@@ -11,14 +11,16 @@
 # ________________________________________________________________
 # Launches an interface to remote control a drone over the network
 
+import sys
+sys.path.insert(0, '/home/pi/Desktop/DEV/gitdirs/PyDroneCode/SharedLibraries')
+from LoggerFactory import LogHandler 
+logHandler = LogHandler()
+logger = logHandler.getLogger("Launcher")
+
 import pygame
 from pygame.locals import *
 pygame.init()
 gameClock = pygame.time.Clock()
-
-import LoggerFactory.LogHandler
-logHandler = LogHandler()
-logger = logHandler.getLogger("Launcher")
 
 # setup network server
 # --> listen to port 21023 for remote control initialization
