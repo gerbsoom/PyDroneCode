@@ -16,8 +16,9 @@ from pygame.locals import *
 pygame.init()
 gameClock = pygame.time.Clock()
 
-from LoggerFactory import LogHandler
-logger = LogHandler().getLogger("Launcher")
+import LoggerFactory
+logHandler = LogHandler()
+logger = logHandler.getLogger("Launcher")
 
 # setup network server
 # --> listen to port 21023 for remote control initialization
