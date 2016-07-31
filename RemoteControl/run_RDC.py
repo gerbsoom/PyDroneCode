@@ -65,7 +65,7 @@ while running:
     gamepad.cycle()
 
     # cycle the TcpServer for new Events or messages
-    tcpServer.cycle()
+    server.cycle()
 
     # get the current orientation over network api and update view with it
     #gyro = sensorSenseHat.getOrientationDegrees()
