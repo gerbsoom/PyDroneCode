@@ -20,7 +20,7 @@ class ViewPort(object):
     def getIdentifier(self):
         return self.identifier
 
-    def __init__(self, _model, _pygameRef, _width=480, _height=320,
+    def __init__(self, _model, _pygameRef, _width=480, height=320,
                  _id="#", _drawingMode="wire-frame"):
 
         self.logger = LogHandler.getLogger(__name__)
