@@ -48,7 +48,7 @@ class ViewPort(object):
             then render all contained objects in the order from far to near. """
 
         self.screen.fill((159, 182, 205))
-        for object in self.model.getSzeneGraph():
-            object.draw(self.pygame, self.screen, self.drawingMode)
+        for element in self.model.getSzeneGraph():
+            element.draw(self.pygame, self.screen, self.drawingMode)
 
         self.pygame.display.flip()
