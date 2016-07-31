@@ -130,7 +130,7 @@ class Model():
             multiplicator += 1
             colorValue = multiplicator * baseValue
             color = (colorValue, colorValue, colorValue)
-            surfaces.append(Surface.Surface((area, color)))
+            surfaces.append(Surface.Surface(area, color))
 
         # construct and return the constructed cube as Box object
-        return Box.Box((surfaces))
+        return Box.Box(surfaces)
