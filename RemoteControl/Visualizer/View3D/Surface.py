@@ -29,7 +29,7 @@ class Surface(object):
             if isinstance(vertice, Point.Point):
                 self.points.append(vertice)
             else:
-                self.points.append(Point.Point((vertice.x, vertice.y, vertice.z)))
+                self.points.append(Point.Point(vertice.x, vertice.y, vertice.z))
 
     def asString(self):
         result = "Surface (" + str(len(self.points)) + ") -->  "
