@@ -33,7 +33,7 @@ class Transmitter(object):
             self.state = "connected"
         except:
             self.state = "error"
-            print("Connection Error!!! E=" + sys.exc_info()[0])
+            #print("Connection Error!!! E=" + sys.exc_info()[0])
             self.socket.close()
             self.socket = 0
 
