@@ -8,14 +8,14 @@
 # @version 0.1
 # @copyright 2016 Desmodul
 # @author Markus Riegert <desmodul@drow-land.de>
-# _______________________________________________________________________
-# Communicates the generated controller commands to the controlled drone.
+# _________________________________________________________________________
+# Listens to specific requests from the controlled drone and receives data.
 
 from LoggerFactory import LogHandler
 
 
-class Transmitter(object):
-    """ Establishes a TCP connection to the drone and populates commands. """
+class Listener(object):
+    """ Creates a listener socket and waits for TCP connection of the drone. """
 
     def __init__(self, _networkConfig):
         self.logger = LogHandler.getLogger(__name__)
@@ -23,5 +23,5 @@ class Transmitter(object):
 
 
 def create(_networkConfig):
-    transmitter = Transmitter(_networkConfig)
-    return transmitter
+    listener = Listener(_networkConfig)
+    return listener

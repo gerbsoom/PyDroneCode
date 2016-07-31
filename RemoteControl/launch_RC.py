@@ -30,7 +30,11 @@ logger.debug("Initialized the pygame engine.")
 # --> listen to port 21023 for remote control initialization
 # --> query initial sensor state in a non-emergency scenario
 
-
+from Network import NetworkConfig
+from Network import TcpServer
+networkConfig = NetworkConfig.create()
+tcpServer = TcpServer.create(networkConfig)
+logger.info("Network Server is up and running.")
 
 #from GamepadController import GamepadController
 #gamepadController = GamepadController(pygame)
