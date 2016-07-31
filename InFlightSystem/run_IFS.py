@@ -32,3 +32,4 @@ server = Server.create(netConf)
 transmitter = server.getTransmitter()
 transmitter.sendData("#DATA#" + "GET sensor_state")
 logger.info("Network Server is up and running.")
+
