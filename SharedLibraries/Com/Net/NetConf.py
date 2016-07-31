@@ -17,7 +17,7 @@ from LoggerFactory import LogHandler
 import sys
 import os
 import os.path
-import ConfigParser
+import configparser
 
 
 class NetConf(object):
@@ -30,7 +30,7 @@ class NetConf(object):
         if os.path.isfile(_config):
             if os.access(_config, os.R_OK):
                 try:
-                    config = ConfigParser.RawConfigParser()
+                    config = configparser.RawConfigParser()
                     config.read(_config)
                     self.targetLan = config.get("lan", "targetLan")
                     self.targetWlan = config.get("lan", "targetWlan")
