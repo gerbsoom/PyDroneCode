@@ -38,7 +38,7 @@ class Gamepad(object):
 
     def initGamepad(self):
         if not self.gamepad:
-            for currentGamepad in self.pygame.joystick:
+            for currentGamepad in self.pygame.joystick.Joystick:
                 name = currentGamepad.get_name()
                 self.logger.debug("Current Gamepad = " + name)
                 self.debugGamepad(currentGamepad)
