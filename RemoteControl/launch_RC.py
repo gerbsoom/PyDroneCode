@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-# 
+#
 # This file is part of PyDroneCode.
-# Please check the file LICENSE.MD for information about the license. 
+# Please check the file LICENSE.MD for information about the license.
 #
 # @file
 # @version 0.1
@@ -12,14 +12,16 @@
 # Launches an interface to remote control a drone over the network
 
 import sys
+# Add SharedLibraries as additional module loading path (simplify installation)
 sys.path.insert(0, '/home/pi/Desktop/DEV/gitdirs/PyDroneCode/SharedLibraries')
-from LoggerFactory import LogHandler 
+from LoggerFactory import LogHandler
 logger = LogHandler.getLogger("Launcher", "_log.conf")
 
 import pygame
 from pygame.locals import *
 pygame.init()
 gameClock = pygame.time.Clock()
+logger.debug("Initialized pygame")
 
 # setup network server
 # --> listen to port 21023 for remote control initialization

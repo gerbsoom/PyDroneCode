@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# 
+#
 # This file is part of PyDroneCode.
-# Please check the file LICENSE.MD for information about the license. 
+# Please check the file LICENSE.MD for information about the license.
 #
 # @file
 # @version 0.3
@@ -13,7 +13,8 @@
 # a valid configuration file, provided as constructor parameters.
 # Without config file logging falls back to print debug on STDout.
 
-import os, sys
+import sys
+import os
 import os.path
 import logging
 import logging.config
@@ -51,5 +52,9 @@ class LogHandler(object):
         return logging.getLogger(_name)
 
 def getLogger(_name="", _logConfig="_log.conf"):
+    """ Gets a logger for the provided config file and the requested name. """
     logHandler = LogHandler(_logConfig)
     return logHandler.getLogger(_name)
+
+if __name__ == '__main__':
+    main()
