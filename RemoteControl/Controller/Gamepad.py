@@ -44,10 +44,10 @@ class Gamepad(object):
                 device = self.pygame.joystick.Joystick(i)
                 name = device.get_name()
                 self.logger.debug("Current device: " + name)
-                self.debugDevice(device)
                 try:
                     device.init()
                     self.gamepad = device
+                    self.debugDevice(device)
                     self.logger.info("Device successfully initialized.")
                 except:
                     self.logger.info("Error initializing control device!!!")
