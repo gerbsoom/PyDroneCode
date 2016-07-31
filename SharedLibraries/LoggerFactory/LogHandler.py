@@ -53,11 +53,13 @@ class LogHandler(object):
         """ Returns a specific log instance the caller's name as channel. """
         return logging.getLogger(_name)
 
+
 def initialize(_logConfig="_log.conf"):
     """ Initializes a global LogHandler instance to retrieve logger from. """
     global loggerInstance
     if not loggerInstance:
         loggerInstance = LogHandler(_logConfig)
+
 
 def getLogger(_name=""):
     """ Retrieves a logger configured with the provided name as channel. """

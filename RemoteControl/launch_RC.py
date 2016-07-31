@@ -13,13 +13,16 @@
 # Launches an interface to remote control a drone over the network
 
 import sys
-# Add SharedLibraries as additional module loading path (simplify installation)
+# add SharedLibraries as additional module loading path (simplify installation)
 sys.path.insert(0, '/home/pi/Desktop/DEV/gitdirs/PyDroneCode/SharedLibraries')
+
+# setup logging
 from LoggerFactory import LogHandler
 LogHandler.initialize("_log.conf")
 logger = LogHandler.getLogger("Launcher")
 logger.debug("Created a global LogHandler to retrieve configured logger from.")
 
+# setup pygame
 import pygame
 from pygame.locals import *
 pygame.init()
@@ -27,20 +30,19 @@ gameClock = pygame.time.Clock()
 logger.debug("Initialized the pygame engine.")
 
 # setup network server
-# --> listen to port 21023 for remote control initialization
-# --> query initial sensor state in a non-emergency scenario
-
 from Network import NetworkConfig
 from Network import TcpServer
 networkConfig = NetworkConfig.create()
 tcpServer = TcpServer.create(networkConfig)
 logger.info("Network Server is up and running.")
+transmitter = tcpServer.getTransmitter()
+transmitter.sendData("#CMD#GET sensor_state")
 
-#from GamepadController import GamepadController
-#gamepadController = GamepadController(pygame)
-# connect network/visualizer callbacks or use event emitting
+# setup gamepad controller
+from Controller import Gamepad
+gamepad = Gamepad.create(pygame, transmitter)
 
-# try/catch or check if X available
+# setup 3D View and further visualizers
 #from Visualizer import View3D
 #view3d = View3D(pygame)
 
@@ -52,8 +54,12 @@ while running:
     keys = pygame.key.get_pressed()
     if keys[K_ESCAPE]:
         running = False
+
     # cycle gamepad for button events or relevant throttle value changes
-    #gamepadController.doCycle()
+    gamepad.cycle()
+
+    # cycle the TcpServer for new Events or messages
+    tcpServer.cycle()
 
     # get the current orientation over network api and update view with it
     #gyro = sensorSenseHat.getOrientationDegrees()

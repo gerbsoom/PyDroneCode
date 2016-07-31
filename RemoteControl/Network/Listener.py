@@ -19,7 +19,7 @@ class Listener(object):
 
     def __init__(self, _networkConfig):
         self.logger = LogHandler.getLogger(__name__)
-        self.logger.debug("ged")
+        self.logger.debug("Awaiting drone request to change network config")
 
 
 def create(_networkConfig):
