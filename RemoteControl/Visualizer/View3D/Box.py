@@ -10,7 +10,7 @@
 # @author Markus Riegert <desmodul@drow-land.de>
 # ______________________________________________________________________________
 
-import Surface
+import Surface as Surface
 
 
 class Box(object):
@@ -20,10 +20,10 @@ class Box(object):
 
         self.surfaces = []
         for surface in _surfaces:
-            if isinstance(surface, Surface):
+            if isinstance(surface, Surface.Surface):
                 self.surfaces.append(surface)
             else:
-                self.surfaces.append(Surface(surface))
+                self.surfaces.append(Surface.Surface(surface))
 
         self.rotationAngles = [0.0, 0.0, 0.0]
         self.zIndexAverage = 0
