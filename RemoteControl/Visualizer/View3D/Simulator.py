@@ -5,7 +5,7 @@
 # Please check the file LICENSE.MD for information about the license.
 #
 # @file
-# @version 0.1
+# @version 0.4
 # @copyright 2016 Desmodul
 # @author Markus Riegert <desmodul@drow-land.de>
 # _____________________________________________________________________
@@ -17,6 +17,7 @@ from math import *
 
 import Model as Model
 import ViewPort as ViewPort
+
 
 class Simulator(object):
 

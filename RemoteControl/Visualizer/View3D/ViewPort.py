@@ -5,7 +5,7 @@
 # Please check the file LICENSE.MD for information about the license.
 #
 # @file
-# @version 0.3
+# @version 0.4
 # @copyright 2016 Desmodul
 # @author Markus Riegert <desmodul@drow-land.de>
 # ______________________________________________________________________________
@@ -52,8 +52,3 @@ class ViewPort(object):
             object.draw(self.pygame, self.screen, self.drawingMode)
 
         self.pygame.display.flip()
-
-
-def create(_pygameRef):
-    viewPort = ViewPort(_pygameRef)
-    return viewPort
