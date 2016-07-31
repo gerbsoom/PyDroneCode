@@ -12,8 +12,8 @@
 # Manages a listening socket and one to transmit commands to the drone.
 
 from LoggerFactory import LogHandler
-import Transmitter as Transmitter
-import Listener as Listener
+from Com.Net import Transmitter
+from Com.Net import Listener
 
 
 class Server(object):

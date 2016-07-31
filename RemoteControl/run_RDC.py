@@ -23,7 +23,7 @@ sys.path.insert(1, baseDir + "RemoteControl/Visualizer/View3D")
 from LoggerFactory import LogHandler
 LogHandler.initialize("_log.conf")
 logger = LogHandler.getLogger("Launcher")
-logger.debug("Created a global LogHandler to retrieve configured logger from.")
+logger.debug("Created a global LogHandler.")
 
 # setup pygame
 import pygame

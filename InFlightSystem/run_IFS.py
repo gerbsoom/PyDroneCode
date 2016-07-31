@@ -21,7 +21,7 @@ sys.path.insert(0, baseDir + "SharedLibraries")
 from LoggerFactory import LogHandler
 LogHandler.initialize("_log.conf")
 logger = LogHandler.getLogger("Launcher")
-logger.debug("Created a global LogHandler to retrieve configured logger from.")
+logger.debug("Created a global LogHandler.")
 
 # setup the network server
 import Com.Net.NetConf as NetConf

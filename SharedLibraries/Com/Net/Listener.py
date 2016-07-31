@@ -71,3 +71,8 @@ class Listener:
         self.socket.close()
         for clientThread in self.clientThreads:
             clientThread.join()
+
+
+def create(_netConf):
+    listener = Listener(_netConf)
+    return listener
