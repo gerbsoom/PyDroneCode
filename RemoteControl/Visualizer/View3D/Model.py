@@ -25,7 +25,6 @@ class Model(object):
         1/2/3D-Objects and offers some basic object building methods. """
 
     def __init__(self, _drone=[], _objects=[]):
-        super(Model, self).__init__(_drone, _objects)
 
         self.logger = LogHandler.getLogger(__name__)
         self.drone = _drone

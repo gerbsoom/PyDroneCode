@@ -17,7 +17,6 @@ class Box(object):
     """ Represents a geometrical box in the space and the functionality
         to rotate it by axis and project it on a 2D surface for viewing. """
     def __init__(self, _surfaces):
-        super(Box, self).__init__(_surfaces)
 
         self.surfaces = []
         for surface in _surfaces:
