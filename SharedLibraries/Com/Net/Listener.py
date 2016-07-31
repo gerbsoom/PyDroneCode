@@ -21,14 +21,15 @@ from Network import ClientTH
 
 class Listener:
 
-    def __init__(self, _networkConfig):
+    def __init__(self, _netConf):
 
-        self.logger = LogHandler.getLogger(__name__)
-        self.listeningAdress = "localhost"
-        self.listeningClientPort = 20040
-        self.socket = None
         self.size = 1024
+        self.socket = None
         self.clientThreads = []
+        self.netConf = _netConf
+        self.logger = LogHandler.getLogger(__name__)
+        self.listeningAdress = _netConf.listeningAdress()
+        self.listenerPort = _netConf.listenerPort()
 
     def isSocketUp(self):
         if self.socket is None:
@@ -39,7 +40,7 @@ class Listener:
     def openSocket(self):
         try:
             self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.socket.bind((self.listeningAdress, self.listeningClientPort))
+            self.socket.bind((self.listeningAdress, self.listenerPort))
             self.socket.listen(5)
 
         except:

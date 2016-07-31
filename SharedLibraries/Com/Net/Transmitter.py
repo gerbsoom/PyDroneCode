@@ -19,17 +19,18 @@ class Transmitter(object):
     """ Establishes a TCP connection to the drone and populates commands. """
 
     def __init__(self, _netConf):
-        self.logger = LogHandler.getLogger(__name__)
-        self.remoteAdressWlan = "192.168.23.199"
-        self.renoteAdressLan = "192.168.1.199"
-        self.remoteControlPort = 20050
+
         self.netConf = _netConf
+        self.targetLan = _netConf.targetLan()
+        self.targetWlan = _netConf.targetWlan()
+        self.targetPort = _netConf.targetPort()
+        self.logger = LogHandler.getLogger(__name__)
 
     def connect(self):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.state = "connecting"
         try:
-            self.socket.connect((self.remoteAdressWlan, self.remoteControlPort))
+            self.socket.connect((self.targetLan, self.targetPort))
             self.state = "connected"
         except:
             self.state = "error"
@@ -57,6 +58,6 @@ class Transmitter(object):
         return self.state
 
 
-def create(_networkConfig):
-    transmitter = Transmitter(_networkConfig)
+def create(_netConf):
+    transmitter = Transmitter(_netConf)
     return transmitter
