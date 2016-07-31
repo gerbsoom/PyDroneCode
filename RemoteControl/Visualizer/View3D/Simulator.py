@@ -29,7 +29,6 @@ class Simulator(object):
             self.logger.debug("pyGame reference is valid")
 
         self.model = Model.Model()
-        self.viewPort = False
         self.viewPort = ViewPort.ViewPort(self.model, _pygameRef,
                                           480, 320, "Simulator")
 
