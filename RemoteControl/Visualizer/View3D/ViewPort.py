@@ -20,7 +20,7 @@ class ViewPort(object):
     def getIdentifier(self):
         return self.identifier
 
-    def __init__(self, _model, _pygameRef, _width=480, height=320,
+    def __init__(self, _model, _pygameRef, _width=480, _height=320,
                  _id="#", _drawingMode="wire-frame"):
 
         self.logger = LogHandler.getLogger(__name__)
@@ -29,10 +29,10 @@ class ViewPort(object):
             self.logger.debug("pyGame reference is valid")
 
         self.identifier = "screen:[" + str(_width) + "x" + str(_height) + "]"
-        self.screen = self.pygame.display.set_mode(_width, _height)
+        self.screen = self.pygame.display.set_mode((_width, _height))
         self.pygame.display.set_caption(self.identifier)
         self.rotationAngles = [0.0, 0.0, 0.0]
-        self.screen.fill(159, 182, 205)
+        self.screen.fill((159, 182, 205))
         self.drawingMode = _drawingMode
 
         self.model = _model
@@ -47,7 +47,7 @@ class ViewPort(object):
             buffer image (filling everything with the background color) and
             then render all contained objects in the order from far to near. """
 
-        self.screen.fill(159, 182, 205)
+        self.screen.fill((159, 182, 205))
         for element in self.model.getSzeneGraph():
             element.draw(self.pygame, self.screen, self.drawingMode)
 
