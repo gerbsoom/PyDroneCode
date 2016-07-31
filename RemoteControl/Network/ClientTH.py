@@ -17,12 +17,12 @@ import threading
 
 class ClientTH(threading.Thread):
 
-    def __init__(self, (client, address)):
+    def __init__(self, _client, _address):
 
         self.logger = LogHandler.getLogger(__name__)
         threading.Thread.__init__(self)
-        self.address = address
-        self.client = client
+        self.address = _address
+        self.client = _client
         self.size = 1024
         self.logger.debug("ClientThread up, waiting for data")
 
