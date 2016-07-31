@@ -25,19 +25,16 @@ class Gamepad(object):
         self.gamepadConfig = _gamepadConfig
         self.transmitter = _transmitter
         self.pygame = _pygameRef
+        self.initialized = False
         if self.pygame:
             self.logger.debug("PyGame reference is valid")
-            self.gamepad = 0
+            self.initDevice()
 
     def deviceInitialized(self):
-        if self.gamepad:
-            return True
-        else:
-            return False
+        return self.initialized
 
     def initDevice(self):
-        if not self.gamepad:
-
+        if not self.deviceInitialized():
             numDev = self.pygame.joystick.get_count()
             self.logger.debug(str(numDev) + " control devices available.")
             for i in range(numDev):
@@ -48,9 +45,11 @@ class Gamepad(object):
                     device.init()
                     self.gamepad = device
                     self.debugDevice(device)
+                    self.initialized = True
                     self.logger.info("Device successfully initialized.")
                 except:
                     self.logger.info("Error initializing control device!!!")
+                    self.initialized = False
 
     def cycle(self):
         if self.deviceInitialized():
