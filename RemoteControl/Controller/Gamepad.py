@@ -28,7 +28,6 @@ class Gamepad(object):
         if self.pygame:
             self.logger.debug("PyGame reference is valid")
             self.gamepad = 0
-            self.initController()
 
     def deviceInitialized(self):
         if self.gamepad:
