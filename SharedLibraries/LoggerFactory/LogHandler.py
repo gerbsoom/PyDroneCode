@@ -19,6 +19,8 @@ import os.path
 import logging
 import logging.config
 
+loggerInstance = 0
+
 
 class LogHandler(object):
     """ Tries to read the log configuration from a provided config file
@@ -51,10 +53,15 @@ class LogHandler(object):
         """ Returns a specific log instance the caller's name as channel. """
         return logging.getLogger(_name)
 
-def getLogger(_name="", _logConfig="_log.conf"):
-    """ Gets a logger for the provided config file and the requested name. """
-    logHandler = LogHandler(_logConfig)
-    return logHandler.getLogger(_name)
+def initialize(_logConfig="_log.conf"):
+    """ Initializes a global LogHandler instance to retrieve logger from. """
+    global loggerInstance
+    if not loggerInstance == 0:
+        loggerInstance = LogHandler(_logConfig)
 
-if __name__ == '__main__':
-    main()
+def getLogger(_name=""):
+    """ Retrieves a logger configured with the provided name as channel. """
+    global loggerInstance
+    if not loggerInstance:
+        initialize()
+    return loggerInstance.getLogger(_name)

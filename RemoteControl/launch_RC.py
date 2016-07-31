@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
 # This file is part of PyDroneCode.
@@ -15,17 +16,21 @@ import sys
 # Add SharedLibraries as additional module loading path (simplify installation)
 sys.path.insert(0, '/home/pi/Desktop/DEV/gitdirs/PyDroneCode/SharedLibraries')
 from LoggerFactory import LogHandler
-logger = LogHandler.getLogger("Launcher", "_log.conf")
+LogHandler.initialize("_log.conf")
+logger = LogHandler.getLogger("Launcher")
+logger.debug("Created a global LogHandler to retrieve configured logger from.")
 
 import pygame
 from pygame.locals import *
 pygame.init()
 gameClock = pygame.time.Clock()
-logger.debug("Initialized pygame")
+logger.debug("Initialized the pygame engine.")
 
 # setup network server
 # --> listen to port 21023 for remote control initialization
 # --> query initial sensor state in a non-emergency scenario
+
+
 
 #from GamepadController import GamepadController
 #gamepadController = GamepadController(pygame)
