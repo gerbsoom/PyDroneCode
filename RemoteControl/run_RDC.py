@@ -32,17 +32,19 @@ pygame.init()
 gameClock = pygame.time.Clock()
 logger.debug("Initialized the pygame engine.")
 
-# setup network server
-from Network import NetworkConfig
-from Network import TcpServer
-networkConfig = NetworkConfig.create()
-tcpServer = TcpServer.create(networkConfig)
-logger.info("Network Server is up and running.")
-transmitter = tcpServer.getTransmitter()
-transmitter.sendData("#CMD#GET sensor_state")
+# setup the network server
+import Com.Net.NetConf as NetConf
+netConf = NetConf.create("_netConf")
 
-# setup gamepad controller
+import Com.Net.Server as Server
+server = Server.create(netConf)
+transmitter = server.getTransmitter()
+transmitter.sendData("#CMD#GET sensor_state")
+logger.info("Network Server is up and running.")
+
+# setup a gamepad controller
 from Controller import Gamepad
+# and set the Network CMD/DATA-Transmitter
 gamepad = Gamepad.create(pygame, transmitter)
 
 # setup the 3D Simulator
