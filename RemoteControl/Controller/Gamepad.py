@@ -54,7 +54,7 @@ class Gamepad(object):
     def cycle(self):
         if self.deviceInitialized():
             self.processPressedButtons()
-            self.processThrottleValues()
+            #self.processThrottleValues()
         else:
             self.initDevice()
 
