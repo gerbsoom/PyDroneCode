@@ -25,7 +25,7 @@ logger.debug("Created a global LogHandler.")
 
 # setup the network server
 import Com.Net.NetConf as NetConf
-netConf = NetConf.create("_netConf")
+netConf = NetConf.create("_net.conf")
 
 import Com.Net.Server as Server
 server = Server.create(netConf)

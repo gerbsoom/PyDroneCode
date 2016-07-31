@@ -23,7 +23,7 @@ import configparser
 class NetConf(object):
     """ Holds the current network configuration. """
 
-    def __init__(self, _config="net.conf"):
+    def __init__(self, _config="_net.conf"):
         self.logger = LogHandler.getLogger(__name__)
         self.logger.debug("Parsing config at: " + _config)
         if os.path.isfile(_config):

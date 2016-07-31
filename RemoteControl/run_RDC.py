@@ -34,7 +34,7 @@ logger.debug("Initialized the pygame engine.")
 
 # setup the network server
 from Com.Net import NetConf
-netConf = NetConf.create("_netConf")
+netConf = NetConf.create("_net.conf")
 
 from Com.Net import Server
 server = Server.create(netConf)
