@@ -15,9 +15,9 @@ from LoggerFactory import LogHandler
 
 from math import *
 
-import Box
-import Point
-import Surface
+import Box as Box
+import Point as Point
+import Surface as Surface
 
 
 class Model():
@@ -50,13 +50,13 @@ class Model():
     def addObject(self, _object):
         """ Adds the provided Objeckt into the szene """
 
-        if isinstance(_object, Point):
+        if isinstance(_object, Point.Point):
             self.objects_1D.append(_object)
             self.logger.debug("Adding Point " + _object.asString())
-        elif isinstance(_object, Surface):
+        elif isinstance(_object, Surface.Surface):
             self.objects_2D.append(_object)
             self.logger.debug("Adding Surface " + _object.asString())
-        elif isinstance(_object, Box):
+        elif isinstance(_object, Box.Box):
             self.objects_3D.append(_object)
             self.logger.debug("Adding box")
         else:
@@ -66,7 +66,7 @@ class Model():
         """ Applies a rotation defined by all provided axis angles.
             Orientational changes get stored in \c rotationAngles.  """
 
-        if not isinstance(_object, Point):
+        if not isinstance(_object, Point.Point):
             if _rotX:
                 _object = _object.rotateX(_rotX)
                 _object.rotationAngles[0] += _rotX
@@ -81,7 +81,7 @@ class Model():
         """ Calculates a rotation which sets all requested axis angles.
             Current orientation angles are stored in rotationAngles.  """
 
-        if not isinstance(_object, Point):
+        if not isinstance(_object, Point.Point):
             if _angleX > _object.rotationAngles[0]:
                 needRotationX = _angleX - _object.rotationAngles[0]
             else:
