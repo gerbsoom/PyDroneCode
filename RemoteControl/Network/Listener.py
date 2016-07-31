@@ -13,13 +13,24 @@
 
 from LoggerFactory import LogHandler
 
+import socketserver
 
-class Listener(object):
+
+class Listener(socketserver.StreamRequestHandler):
     """ Creates a listener socket and waits for TCP connection of the drone. """
 
     def __init__(self, _networkConfig):
+
         self.logger = LogHandler.getLogger(__name__)
         self.logger.debug("Awaiting drone request to change network config")
+
+    def handle(self):
+        # self.data = self.rfile.readline().strip()
+        self.data = self.rfile.read(100).strip()
+        self.logger.debug(self.data)
+        self.logger.debug("{} wrote:".format(self.client_address[0]))
+        # maybe anser something directly
+        # self.wfile.write(self.data.upper())
 
 
 def create(_networkConfig):
