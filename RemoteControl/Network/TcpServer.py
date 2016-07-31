@@ -15,8 +15,6 @@ from LoggerFactory import LogHandler
 from Network import Transmitter
 from Network import Listener
 
-import socketserver
-
 
 class TcpServer(object):
     """ Manages a bidirectional communication with the drone. """
@@ -24,13 +22,9 @@ class TcpServer(object):
     def __init__(self, _networkConfig):
 
         self.logger = LogHandler.getLogger(__name__)
+        self.dataReceiver = []
         self.listerner = Listener.create(_networkConfig)
-
-        self.serverSocket = socketserver.TCPServer(("localhost", 20040),
-                                                   self.listerner)
-        self.serverSocket.serve_forever()
-
-        self.logger.debug("Network socket is NON-bloocking...")
+        self.listener.openSocket()
 
         self.transmitter = Transmitter.create(_networkConfig)
         self.transmitter.connect()
@@ -41,6 +35,9 @@ class TcpServer(object):
 
     def getTransmitter(self):
         return self.transmitter
+
+    def addDataReceiver(self, _dataReceiver):
+        self.dataReceiver.append(_dataReceiver)
 
 
 def create(_networkConfig):
