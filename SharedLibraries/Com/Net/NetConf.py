@@ -26,7 +26,6 @@ class NetConf(object):
     def __init__(self, _config="net.conf"):
         self.logger = LogHandler.getLogger(__name__)
         self.logger.debug("Parsing config at: " + _config)
-        parseOk = False
         if os.path.isfile(_config):
             if os.access(_config, os.R_OK):
                 try:
@@ -37,19 +36,20 @@ class NetConf(object):
                     self.targetPort = config.getint("lan", "listenerPort")
                     self.listenAddress = config.get("lan", "listenAdress")
                     self.listenerPort = config.getint("lan", "listenerPort")
+                    self.logger.info("Config parsed successfully.")
 
-                    parseOk = True
                 except:
                     print(("ERROR: Parsing config!!! E=", sys.exc_info()[0]))
+                    self.logger.info("Using default values from memory")
+                    self.targetLan = "192.168.1.199"
+                    self.targetWlan = "192.168.23.199"
+                    self.targetPort = 20050
+                    self.listenAddress = "192.168.23.198"
+                    self.listenerPort = 20040
             else:
                 print("ERROR: Config exists but is not accessible!!!")
         else:
             print("ERROR: Config does NOT exist!!!")
-
-        if parseOk:
-            self.logger.info("Config parsed successfully.")
-        else:
-            self.logger.info("Error parsing network config!!!")
 
     def targetLan(self):
         return self.targetLan
