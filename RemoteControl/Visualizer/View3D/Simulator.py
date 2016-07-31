@@ -43,7 +43,7 @@ class Simulator(object):
 
     def cycle(self):
         if self.started:
-            self.rotateDrone(self, 0.0001)
+            self.rotateDrone(0.0001, 0.0001, 0.0001)
             self.viewPort.renderScene()
 
     def rotateDrone(self, _angleX, _angleY, _angleZ):
