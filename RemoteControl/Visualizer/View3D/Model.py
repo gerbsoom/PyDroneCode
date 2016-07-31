@@ -35,7 +35,7 @@ class Model():
         for object in _objects:
             self.addObject(object)
 
-    def setDrone(_objects=[]):
+    def setDrone(self, _objects=[]):
         self.drone = _objects
 
     def getSzeneGraph():
