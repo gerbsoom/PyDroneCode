@@ -106,10 +106,10 @@ class Model():
         Pz = _basePosZ + 1.0 * _scaleZ
 
         # generate the vertex points to define the surfaces with
-        points = [Point(-Px, Py, -Pz), Point(Px, Py, -Pz),
-                  Point(Px, Py, -Pz), Point(-Px, -Py, -Pz),
-                  Point(-Px, Py, Pz), Point(Px, Py, Pz),
-                  Point(Px, -Py, Pz), Point(-Px, -Py, Pz)]
+        points = [Point.Point(-Px, Py, -Pz), Point.Point(Px, Py, -Pz),
+                  Point.Point(Px, Py, -Pz), Point.Point(-Px, -Py, -Pz),
+                  Point.Point(-Px, Py, Pz), Point.Point(Px, Py, Pz),
+                  Point.Point(Px, -Py, Pz), Point.Point(-Px, -Py, Pz)]
 
         # construct all cube surfaces from these areas raw data
         areaData = [(points[0], points[1], points[2], points[3]),
@@ -127,7 +127,7 @@ class Model():
             multiplicator += 1
             colorValue = multiplicator * baseValue
             color = (colorValue, colorValue, colorValue)
-            surfaces.append(Surface(area, color))
+            surfaces.append(Surface.Surface((area, color)))
 
         # construct and return the constructed cube as Box object
-        return Box(surfaces)
+        return Box.Box((surfaces))
