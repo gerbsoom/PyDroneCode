@@ -20,7 +20,7 @@ import Point
 import Surface
 
 
-class Model(object):
+class Model():
     """ Represents the complete szene graph containing all created geometrical
         1/2/3D-Objects and offers some basic object building methods. """
 

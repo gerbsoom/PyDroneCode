@@ -13,8 +13,11 @@
 # Launches an interface to remote control a drone over the network
 
 import sys
+baseDir = "/home/pi/Desktop/DEV/gitdirs/PyDroneCode/"
 # add SharedLibraries as additional module loading path (simplify installation)
-sys.path.insert(0, '/home/pi/Desktop/DEV/gitdirs/PyDroneCode/SharedLibraries')
+sys.path.insert(0, baseDir + "SharedLibraries")
+# add Simulator directory to simplify installation
+sys.path.insert(1, baseDir + "RemoteControl/Visualizer/View3D")
 
 # setup logging
 from LoggerFactory import LogHandler
