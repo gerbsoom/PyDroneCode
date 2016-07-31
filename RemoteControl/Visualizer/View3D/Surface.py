@@ -26,10 +26,10 @@ class Surface(object):
 
         self.points = []
         for vertice in _vertices:
-            if isinstance(vertice, Point):
+            if isinstance(vertice, Point.Point):
                 self.points.append(vertice)
             else:
-                self.points.append(Point(vertice.x, vertice.y, vertice.z))
+                self.points.append(Point.Point((vertice.x, vertice.y, vertice.z)))
 
     def asString(self):
         result = "Surface (" + str(len(self.points)) + ") -->  "
