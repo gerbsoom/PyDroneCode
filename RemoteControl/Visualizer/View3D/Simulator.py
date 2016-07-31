@@ -29,7 +29,7 @@ class Simulator(object):
             self.logger.debug("pyGame reference is valid")
 
         self.model = Model()
-        self.view = ViewPort(model, _pygameRef, 480, 320, "Simulator",)
+        self.viewPort = ViewPort(model, _pygameRef, 480, 320, "Simulator")
 
         self.logger.debug("Simulator is up and running...")
         self.started = False
@@ -43,7 +43,7 @@ class Simulator(object):
     def cycle(self):
         if self.started:
             self.rotateDrone(self, _angleX=0.0001)
-            self.view.renderScene()
+            self.viewPort.renderScene()
 
     def rotateDrone(self, _angleX, _angleY, _angleZ):
         for object in self.model.drone:

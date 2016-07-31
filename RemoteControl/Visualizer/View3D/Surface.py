@@ -10,7 +10,7 @@
 # @author Markus Riegert <desmodul@drow-land.de>
 # ______________________________________________________________________________
 
-import Point
+from Visualizer.View3D import Point
 
 
 class Surface(object):

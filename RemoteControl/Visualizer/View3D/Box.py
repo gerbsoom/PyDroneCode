@@ -10,7 +10,7 @@
 # @author Markus Riegert <desmodul@drow-land.de>
 # ______________________________________________________________________________
 
-import Surface
+from Visualizer.View3D import Surface
 
 
 class Box(object):

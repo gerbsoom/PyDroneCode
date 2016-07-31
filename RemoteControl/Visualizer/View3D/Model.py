@@ -15,12 +15,12 @@ from LoggerFactory import LogHandler
 
 from math import *
 
-import Box
-import Point
-import Surface
+from Visualizer.View3D import Box
+from Visualizer.View3D import Point
+from Visualizer.View3D import Surface
 
 
-class Model():
+class Model(object):
     """ Represents the complete szene graph containing all created geometrical
         1/2/3D-Objects and offers some basic object building methods. """
 
