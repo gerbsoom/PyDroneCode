@@ -50,7 +50,7 @@ gamepad = Gamepad.create(pygame, transmitter)
 # setup the 3D Simulator
 import Visualizer.View3D.Simulator as Simulator
 simulator = Simulator.create(pygame)
-simulator.start()
+#simulator.start()
 
 self.logger.warn("ggegee")
 
