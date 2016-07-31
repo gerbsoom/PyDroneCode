@@ -13,7 +13,7 @@
 import Point
 
 
-class Surface:
+class Surface(object):
     """ Represents a geometrical surface in the space and the functionality
         to rotate it by axis and project it on a 2D surface for viewing. """
 

@@ -13,7 +13,7 @@
 import math
 
 
-class Point:
+class Point(object):
     """ Represents a geometrical point in the space and the functionality
         to rotate it by axis and project it on a 2D surface for viewing.
         @toDo: Replace the sinus-calculations with matrix-rotations. """

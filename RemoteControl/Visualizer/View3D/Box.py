@@ -13,7 +13,7 @@
 import Surface
 
 
-class Box():
+class Box(object):
     """ Represents a geometrical box in the space and the functionality
         to rotate it by axis and project it on a 2D surface for viewing. """
     def __init__(self, _surfaces):
