@@ -16,7 +16,7 @@ import select
 import socket
 import sys
 
-from Network import ClientTH
+from Com.Net import ClientTH
 
 
 class Listener:
@@ -58,7 +58,7 @@ class Listener:
                 if newSocket == self.server:
                     # the selected socket is the server socket and a client
                     # thread is started that accepts there new connections
-                    clientThread = ClientTH.ClientTH(self.socket.accept())
+                    clientThread = ClientTH(self.socket.accept())
                     clientThread.start()
                     self.clientThreads.append(clientThread)
 
