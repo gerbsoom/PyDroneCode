@@ -24,15 +24,13 @@ class Simulator(object):
     def __init__(self, _pygameRef):
 
         self.logger = LogHandler.getLogger(__name__)
+        self.model = Model.create()
         self.pygame = _pygameRef
         if self.pygame:
             self.logger.debug("pyGame reference is valid")
+            self.viewPort = ViewPort.create(self.model, _pygameRef, 480, 320)
+            self.logger.debug("Simulator is up and running...")
 
-        self.model = Model.Model()
-        self.viewPort = ViewPort.ViewPort(self.model, _pygameRef,
-                                          480, 320, "Simulator")
-
-        self.logger.debug("Simulator is up and running...")
         self.started = False
 
     def start(self):

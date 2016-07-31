@@ -21,7 +21,7 @@ class ViewPort(object):
         return self.identifier
 
     def __init__(self, _model, _pygameRef, _width=480, _height=320,
-                 _id="#", _drawingMode="wire-frame"):
+                 _drawingMode="wire-frame"):
 
         self.logger = LogHandler.getLogger(__name__)
         self.pygame = _pygameRef
@@ -34,7 +34,6 @@ class ViewPort(object):
         self.rotationAngles = [0.0, 0.0, 0.0]
         self.screen.fill((159, 182, 205))
         self.drawingMode = _drawingMode
-
         self.model = _model
 
         self.logger.debug("ViewPort initialized: " + self.identifier)
@@ -52,3 +51,9 @@ class ViewPort(object):
             element.draw(self.pygame, self.screen, self.drawingMode)
 
         self.pygame.display.flip()
+
+
+def create(_model, _pygameRef, _width=480, _height=320, _drawMode="wire-frame"):
+    viewPort = ViewPort(_model, _pygameRef, _width, _height, _drawMode)
+
+    return viewPort
