@@ -28,7 +28,7 @@ class TcpServer(object):
 
         self.serverSocket = socketserver.TCPServer(("localhost", 20040),
                                                    self.listerner)
-        self.server.serve_forever()
+        self.serverSocket.serve_forever()
 
         self.logger.debug("Network socket is NON-bloocking...")
 
