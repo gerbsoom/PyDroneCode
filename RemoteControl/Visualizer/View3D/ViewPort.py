@@ -5,7 +5,7 @@
 # Please check the file LICENSE.MD for information about the license.
 #
 # @file
-# @version 0.1
+# @version 0.2
 # @copyright 2016 Desmodul
 # @author Markus Riegert <desmodul@drow-land.de>
 # ______________________________________________________________________________
@@ -20,7 +20,7 @@ class ViewPort(object):
     def getIdentifier(self):
         return self.identifier
 
-    def __init__(self, _model, _pygameRef, _width=480, height=_320,
+    def __init__(self, _model, _pygameRef, _width=480, _height=320,
                  _id="#", _drawingMode="wire-frame"):
 
         self.logger = LogHandler.getLogger(__name__)
@@ -52,3 +52,8 @@ class ViewPort(object):
             object.draw(self.pygame, self.screen, self.drawingMode)
 
         self.pygame.display.flip()
+
+
+#def create(_pygameRef):
+    #viewPort = ViewPort(_pygameRef)
+    #return viewPort
