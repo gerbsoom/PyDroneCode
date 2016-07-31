@@ -28,33 +28,37 @@ class Gamepad(object):
         if self.pygame:
             self.logger.debug("PyGame reference is valid")
             self.gamepad = 0
-            self.initGamepad()
+            self.initController()
 
-    def gamepadInitialized(self):
+    def deviceInitialized(self):
         if self.gamepad:
             return True
         else:
             return False
 
-    def initGamepad(self):
+    def initDevice(self):
         if not self.gamepad:
-            for currentGamepad in self.pygame.joystick.Joystick:
-                name = currentGamepad.get_name()
-                self.logger.debug("Current Gamepad = " + name)
-                self.debugGamepad(currentGamepad)
+
+            numDev = self.pygame.joystick.get_count()
+            self.logger.debug(str(numDev) + " control devices available.")
+            for i in range(numDev):
+                device = self.pygame.joystick.Joystick(i)
+                name = device.get_name()
+                self.logger.debug("Current device: " + name)
+                self.debugDevice(device)
                 try:
-                    currentGamepad.init()
-                    self.gamepad = currentGamepad
-                    self.logger.info("Gamepad successfully initialized.")
+                    device.init()
+                    self.gamepad = device
+                    self.logger.info("Device successfully initialized.")
                 except:
-                    self.logger.info("Error initializing the gamepad!!!")
+                    self.logger.info("Error initializing control device!!!")
 
     def cycle(self):
-        if self.gamepadInitialized():
+        if self.deviceInitialized():
             self.processPressedButtons()
             self.processThrottleValues()
         else:
-            self.initGamepad()
+            self.initDevice()
 
     def processPressedButtons(self):
 
@@ -88,7 +92,7 @@ class Gamepad(object):
 
                 self.logger.debug("Axis [" + str(i) + "]->" + str(throttles[i]))
 
-    def debugGamepad(self, _gamepad):
+    def debugDevice(self, _gamepad):
         self.logger.debug("Buttons: " + str(_gamepad.get_numbuttons()))
         self.logger.debug("Axis: " + str(_gamepad.get_numaxes()))
 
