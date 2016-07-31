@@ -22,9 +22,9 @@ class Transmitter(object):
     def __init__(self, _netConf):
 
         self.netConf = _netConf
-        self.targetLan = _netConf.targetLan()
-        self.targetWlan = _netConf.targetWlan()
-        self.targetPort = _netConf.targetPort()
+        self.targetLan = _netConf.targetLan
+        self.targetWlan = _netConf.targetWlan
+        self.targetPort = _netConf.targetPort
         self.logger = LogHandler.getLogger(__name__)
 
     def connect(self):

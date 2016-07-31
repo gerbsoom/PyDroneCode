@@ -51,21 +51,6 @@ class NetConf(object):
         else:
             print("ERROR: Config does NOT exist!!!")
 
-    def targetLan(self):
-        return self.targetLan
-
-    def targetWlan(self):
-        return self.targetWlan
-
-    def targetPort(self):
-        return self.targetPort
-
-    def listenAdress(self):
-        return self.listenAdress
-
-    def listenerPort(self):
-        return self.listenerPort
-
 
 def create(_config):
     netConf = NetConf(_config)
