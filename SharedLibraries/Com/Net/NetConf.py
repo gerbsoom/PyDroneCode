@@ -33,7 +33,7 @@ class NetConf(object):
                     config.read(_config)
                     self.targetLan = config.get("lan", "targetLan")
                     self.targetWlan = config.get("lan", "targetWlan")
-                    self.targetPort = config.getint("lan", "listenerPort")
+                    self.targetPort = config.getint("lan", "targetPort")
                     self.listenAdress = config.get("lan", "listenAdress")
                     self.listenerPort = config.getint("lan", "listenerPort")
                     self.logger.info("Config parsed successfully.")
