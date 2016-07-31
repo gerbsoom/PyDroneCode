@@ -34,7 +34,7 @@ class NetConf(object):
                     self.targetLan = config.get("lan", "targetLan")
                     self.targetWlan = config.get("lan", "targetWlan")
                     self.targetPort = config.getint("lan", "listenerPort")
-                    self.listenAddress = config.get("lan", "listenAdress")
+                    self.listenAdress = config.get("lan", "listenAdress")
                     self.listenerPort = config.getint("lan", "listenerPort")
                     self.logger.info("Config parsed successfully.")
 
@@ -44,7 +44,7 @@ class NetConf(object):
                     self.targetLan = "192.168.1.199"
                     self.targetWlan = "192.168.23.199"
                     self.targetPort = 20050
-                    self.listenAddress = "192.168.23.198"
+                    self.listenAdress = "192.168.23.198"
                     self.listenerPort = 20040
             else:
                 print("ERROR: Config exists but is not accessible!!!")

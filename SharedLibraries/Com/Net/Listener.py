@@ -28,7 +28,7 @@ class Listener:
         self.clientThreads = []
         self.netConf = _netConf
         self.logger = LogHandler.getLogger(__name__)
-        self.listeningAdress = _netConf.listeningAdress()
+        self.listenAdress = _netConf.listenAdress()
         self.listenerPort = _netConf.listenerPort()
 
     def isSocketUp(self):
