@@ -56,7 +56,7 @@ class LogHandler(object):
 def initialize(_logConfig="_log.conf"):
     """ Initializes a global LogHandler instance to retrieve logger from. """
     global loggerInstance
-    if not loggerInstance == 0:
+    if not loggerInstance:
         loggerInstance = LogHandler(_logConfig)
 
 def getLogger(_name=""):
