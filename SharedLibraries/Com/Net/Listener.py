@@ -27,9 +27,9 @@ class Listener:
         self.socket = None
         self.clientThreads = []
         self.netConf = _netConf
+        self.listenAdress = self.netConf.listenAdress
+        self.listenerPort = self.netConf.listenerPort
         self.logger = LogHandler.getLogger(__name__)
-        self.listenAdress = _netConf.listenAdress()
-        self.listenerPort = _netConf.listenerPort()
 
     def isSocketUp(self):
         if self.socket is None:

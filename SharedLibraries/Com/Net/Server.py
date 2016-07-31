@@ -22,7 +22,7 @@ class Server(object):
     def __init__(self, _netConf):
 
         self.logger = LogHandler.getLogger(__name__)
-        self.listener = Listener.Listener(_netConf)
+        self.listener = Listener.create(_netConf)
         self.listener.openSocket()
         self.dataReceiver = []
 
