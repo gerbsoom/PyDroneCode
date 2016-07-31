@@ -33,10 +33,10 @@ gameClock = pygame.time.Clock()
 logger.debug("Initialized the pygame engine.")
 
 # setup the network server
-import Com.Net.NetConf as NetConf
+from Com.Net import NetConf as NetConf
 netConf = NetConf.create("_netConf")
 
-import Com.Net.Server as Server
+from Com.Net import Server as Server
 server = Server.create(netConf)
 transmitter = server.getTransmitter()
 transmitter.sendData("#CMD#GET sensor_state")
