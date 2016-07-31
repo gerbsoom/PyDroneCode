@@ -15,13 +15,12 @@
 from LoggerFactory import LogHandler
 from math import *
 
+import Model as Model
+import ViewPort as ViewPort
 
 class Simulator(object):
 
     def __init__(self, _pygameRef):
-
-        import Model as Model
-        import ViewPort as ViewPort
 
         self.logger = LogHandler.getLogger(__name__)
         self.pygame = _pygameRef
@@ -29,7 +28,8 @@ class Simulator(object):
             self.logger.debug("pyGame reference is valid")
 
         self.model = Model.Model()
-        self.viewPort = ViewPort.ViewPort(self.model, _pygameRef, 480, 320, "Simulator")
+        self.viewPort = ViewPort.ViewPort(self.model, _pygameRef,
+                                          480, 320, "Simulator")
 
         self.logger.debug("Simulator is up and running...")
         self.started = False
