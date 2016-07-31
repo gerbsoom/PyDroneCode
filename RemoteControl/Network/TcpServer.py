@@ -22,7 +22,7 @@ class TcpServer(object):
     def __init__(self, _networkConfig):
 
         self.logger = LogHandler.getLogger(__name__)
-        self.listerner = Listener(_networkConfig)
+        self.listerner = Listener.Listener(_networkConfig)
         self.listener.openSocket()
         self.dataReceiver = []
 
