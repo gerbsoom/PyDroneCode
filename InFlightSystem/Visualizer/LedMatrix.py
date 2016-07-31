@@ -17,7 +17,7 @@
 #    visualizerSensorHat.showRightThrottleAt(255-i);
 
 from LoggerFactory import LogHandler
-from sense_hat import SenseHat
+
 from math import *
 
 
@@ -89,3 +89,8 @@ class LedMatrix(object):
     def hideDisplay(self):
         self.senseHat.ledMatrix = self.createEmptyMatrix()
         self.senseHat.set_pixels(self.senseHat.ledMatrix)
+
+
+def create(_senseHat):
+    ledMatrix = LedMatrix(_senseHat)
+    return ledMatrix
