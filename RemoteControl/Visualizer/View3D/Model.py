@@ -39,13 +39,17 @@ class Model():
         self.drone = _objects
 
     def getSzeneGraph():
-        objects = []
-        objects.append(self.drone)
-        objects.append(self.objects_1D)
-        objects.append(self.objects_2D)
-        objects.append(self.objects_3D)
+        szeneGraph = []
+        for element in self.drone:
+            szeneGraph.append(element)
+        for element in self.objects_1D:
+            szeneGraph.append(element)
+        for element in self.objects_2D:
+            szeneGraph.append(element)
+        for element in self.objects_3D:
+            szeneGraph.append(element)
 
-        return objects
+        return szeneGraph
 
     def addObject(self, _object):
         """ Adds the provided Objeckt into the szene """
