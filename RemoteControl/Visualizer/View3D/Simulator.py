@@ -20,8 +20,8 @@ class Simulator(object):
 
     def __init__(self, _pygameRef):
 
-        import Model
-        import ViewPort
+        import Model as Model
+        import ViewPort as ViewPort
 
         self.logger = LogHandler.getLogger(__name__)
         self.pygame = _pygameRef

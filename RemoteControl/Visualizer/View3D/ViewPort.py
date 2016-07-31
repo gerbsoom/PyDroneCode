@@ -54,6 +54,6 @@ class ViewPort(object):
         self.pygame.display.flip()
 
 
-#def create(_pygameRef):
-    #viewPort = ViewPort(_pygameRef)
-    #return viewPort
+def create(_pygameRef):
+    viewPort = ViewPort(_pygameRef)
+    return viewPort
