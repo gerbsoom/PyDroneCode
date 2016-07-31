@@ -54,7 +54,7 @@ class NetConf(object):
     def targetLan(self):
         return self.targetLan
 
-    def targetWLan(self):
+    def targetWlan(self):
         return self.targetWlan
 
     def targetPort(self):
