@@ -52,7 +52,7 @@ import Visualizer.View3D.Simulator as Simulator
 simulator = Simulator.create(pygame)
 simulator.start()
 
-self.logger.warn("ggegee)
+self.logger.warn("ggegee")
 
 running = True
 while running:
