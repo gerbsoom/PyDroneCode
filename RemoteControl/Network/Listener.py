@@ -16,7 +16,7 @@ import select
 import socket
 import sys
 
-import ClientTH as ClientTH
+from Network import ClientTH
 
 
 class Listener:
