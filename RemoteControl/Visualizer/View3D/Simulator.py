@@ -15,8 +15,8 @@
 from LoggerFactory import LogHandler
 from math import *
 
-import Model as Model
-import ViewPort as ViewPort
+import Model
+import ViewPort
 
 class Simulator(object):
 
