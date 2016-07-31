@@ -42,9 +42,10 @@ transmitter.sendData("#CMD#GET sensor_state")
 from Controller import Gamepad
 gamepad = Gamepad.create(pygame, transmitter)
 
-# setup 3D View and further visualizers
-#from Visualizer import View3D
-#view3d = View3D(pygame)
+# setup the 3D Simulator
+import Visualizer.View3D.Simulator as Simulator
+simulator = Simulator.create(pygame)
+simulator.start()
 
 running = True
 while running:
@@ -67,6 +68,8 @@ while running:
     #                                360.0 - gyro["yaw"],
     #                                360.0 - gyro["roll"])
     gameClock.tick(50)
+
+    simulator.cycle()
 
 if __name__ == '__main__':
     main()
