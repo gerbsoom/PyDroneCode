@@ -29,17 +29,18 @@ class Simulator(object):
             self.logger.debug("pyGame reference is valid")
 
         self.model = Model.Model()
-        self.viewPort = ViewPort.ViewPort(self.model, _pygameRef,
-                                          480, 320, "Simulator")
+        self.viewPort = False
+        #self.viewPort = ViewPort.ViewPort(self.model, _pygameRef,
+        #                                  480, 320, "Simulator")
 
         self.logger.debug("Simulator is up and running...")
         self.started = False
 
     def start(self):
-        self.started = True
         drone = []
         drone.append(self.model.createCube())
         self.model.setDrone(drone)
+        self.started = True
 
     def cycle(self):
         if self.started:

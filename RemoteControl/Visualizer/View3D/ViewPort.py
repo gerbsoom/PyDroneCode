@@ -28,11 +28,11 @@ class ViewPort(object):
         if self.pygame:
             self.logger.debug("pyGame reference is valid")
 
-        self.identifier = _id + " ViewPort: " + str(_width) + "x" + str(_height)
-        self.screen = self.pygame.display.set_mode((_width, _height))
+        self.identifier = "screen:[" + str(_width) + "x" + str(_height) + "]"
+        self.screen = self.pygame.display.set_mode(_width, _height)
         self.pygame.display.set_caption(self.identifier)
         self.rotationAngles = [0.0, 0.0, 0.0]
-        self.screen.fill((159, 182, 205))
+        self.screen.fill(159, 182, 205)
         self.drawingMode = _drawingMode
 
         self.model = _model
@@ -47,7 +47,7 @@ class ViewPort(object):
             buffer image (filling everything with the background color) and
             then render all contained objects in the order from far to near. """
 
-        self.screen.fill((159, 182, 205))
+        self.screen.fill(159, 182, 205)
         for element in self.model.getSzeneGraph():
             element.draw(self.pygame, self.screen, self.drawingMode)
 

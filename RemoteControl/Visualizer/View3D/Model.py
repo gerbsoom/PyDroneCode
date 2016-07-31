@@ -32,13 +32,13 @@ class Model():
         self.objects_2D = []
         self.objects_3D = []
         # define a preset of initial objects that get added to the scene
-        for object in _objects:
-            self.addObject(object)
+        for element in _objects:
+            self.addObject(element)
 
     def setDrone(self, _objects=[]):
         self.drone = _objects
 
-    def getSzeneGraph():
+    def getSzeneGraph(self):
         szeneGraph = []
         for element in self.drone:
             szeneGraph.append(element)
