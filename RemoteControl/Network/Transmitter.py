@@ -13,7 +13,6 @@
 
 from LoggerFactory import LogHandler
 import socket
-import sys
 
 
 class Transmitter(object):

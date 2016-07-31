@@ -27,17 +27,34 @@ class Gamepad(object):
         self.pygame = _pygameRef
         if self.pygame:
             self.logger.debug("PyGame reference is valid")
-            self.gamepad = self.pygame.joystick.Joystick(0)
-            if self.gamepad:
-                self.logger.info("Gamepad = " + self.gamepad.get_name())
-                self.gamepad.init()
-                self.debugGamepad()
-            else:
-                self.logger.info("Error initializing the gamepad!!!")
+            self.gamepad = 0
+            self.initGamepad()
+
+    def gamepadInitialized(self):
+        if self.gamepad:
+            return True
+        else:
+            return False
+
+    def initGamepad(self):
+        if not self.gamepad:
+            for currentGamepad in self.pygame.joystick:
+                name = currentGamepad.get_name()
+                self.logger.debug("Current Gamepad = " + name)
+                self.debugGamepad(currentGamepad)
+                try:
+                    currentGamepad.init()
+                    self.gamepad = currentGamepad
+                    self.logger.info("Gamepad successfully initialized.")
+                except:
+                    self.logger.info("Error initializing the gamepad!!!")
 
     def cycle(self):
-        self.processPressedButtons()
-        self.processThrottleValues()
+        if self.gamepadInitialized():
+            self.processPressedButtons()
+            self.processThrottleValues()
+        else:
+            self.initGamepad()
 
     def processPressedButtons(self):
 
@@ -71,9 +88,9 @@ class Gamepad(object):
 
                 self.logger.debug("Axis [" + str(i) + "]->" + str(throttles[i]))
 
-    def debugGamepad(self):
-        self.logger.debug("Buttons: " + str(self.gamepad.get_numbuttons()))
-        self.logger.debug("Axis: " + str(self.gamepad.get_numaxes()))
+    def debugGamepad(self, _gamepad):
+        self.logger.debug("Buttons: " + str(_gamepad.get_numbuttons()))
+        self.logger.debug("Axis: " + str(_gamepad.get_numaxes()))
 
 
 def create(_pygameRef, _transmitter, _gamepadConfig=False):
