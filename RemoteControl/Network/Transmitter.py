@@ -23,7 +23,7 @@ class Transmitter(object):
         self.logger = LogHandler.getLogger(__name__)
         self.droneAdressWlan = "192.168.23.199"
         self.droneAdressLan = "192.168.1.199"
-        self.droneControlPort = "20050"
+        self.droneControlPort = 20050
 
     def connect(self):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
