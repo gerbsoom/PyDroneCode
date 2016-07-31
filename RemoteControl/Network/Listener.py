@@ -42,10 +42,8 @@ class Listener:
             self.socket.bind((self.listeningAdress, self.listeningClientPort))
             self.socket.listen(5)
 
-        except socket.error, (value, message):
-            if self.socket:
-                self.socket.close()
-            print "Could not open socket: " + message
+        except:
+            self.logger.warn("Could not open socket for listening!!!")
             self.socket = None
 
     def run(self):
