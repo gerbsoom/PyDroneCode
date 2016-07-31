@@ -30,8 +30,8 @@ class Simulator(object):
 
         self.model = Model.Model()
         self.viewPort = False
-        #self.viewPort = ViewPort.ViewPort(self.model, _pygameRef,
-        #                                  480, 320, "Simulator")
+        self.viewPort = ViewPort.ViewPort(self.model, _pygameRef,
+                                          480, 320, "Simulator")
 
         self.logger.debug("Simulator is up and running...")
         self.started = False
