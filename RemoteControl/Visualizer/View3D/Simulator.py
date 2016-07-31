@@ -28,8 +28,8 @@ class Simulator(object):
         if self.pygame:
             self.logger.debug("pyGame reference is valid")
 
-        self.model = Model()
-        self.viewPort = ViewPort(model, _pygameRef, 480, 320, "Simulator")
+        self.model = Model.Model()
+        self.viewPort = ViewPort.ViewPort(model, _pygameRef, 480, 320, "Simulator")
 
         self.logger.debug("Simulator is up and running...")
         self.started = False
