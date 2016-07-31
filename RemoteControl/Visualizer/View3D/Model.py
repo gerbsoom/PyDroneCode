@@ -139,3 +139,8 @@ class Model():
 
         # construct and return the constructed cube as Box object
         return Box.Box(surfaces)
+
+
+def create(_drone=[], _objects=[]):
+    model = Model(_drone, _objects)
+    return model
