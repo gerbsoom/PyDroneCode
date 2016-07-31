@@ -58,6 +58,9 @@ class Model():
             self.logger.debug("Adding Surface " + _object.asString())
         elif isinstance(_object, Box):
             self.objects_3D.append(_object)
+            self.logger.debug("Adding box")
+        else:
+            self.logger.warn("No instanceOf-checks succeeded!!!")
 
     def rotateObject(self, _object, _rotX=False, _rotY=False, _rotZ=False):
         """ Applies a rotation defined by all provided axis angles.

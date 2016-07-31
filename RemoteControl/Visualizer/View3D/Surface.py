@@ -26,7 +26,7 @@ class Surface(object):
 
         self.points = []
         for vertice in _vertices:
-            if isinstance(vertice, Point.Point):
+            if isinstance(vertice, Point):
                 self.points.append(vertice)
             else:
                 self.points.append(Point.Point(vertice.x, vertice.y, vertice.z))
