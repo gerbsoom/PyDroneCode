@@ -26,30 +26,30 @@ class SensorHat():
     def getOrientationDegrees(self):
 
         orientation = self.senseHat.get_orientation_degrees()
-        self.logger.debug("Orientation_YAW: " + orientation["yaw"])
-        self.logger.debug("Orientation_PITCH: " + orientation["pitch"])
-        self.logger.debug("Orientation_ROLL: " + orientation["roll"])
+        #self.logger.debug("Orientation_YAW: " + orientation["yaw"])
+        #self.logger.debug("Orientation_PITCH: " + orientation["pitch"])
+        #self.logger.debug("Orientation_ROLL: " + orientation["roll"])
 
         return orientation
 
     def getYawDegree(self):
 
         orientation = self.senseHat.get_orientation_degrees()
-        self.logger.debug("Orientation_YAW: " + orientation["yaw"])
+        #self.logger.debug("Orientation_YAW: " + orientation["yaw"])
 
         return orientation["yaw"]
 
     def getPitchDegree(self):
 
         orientation = self.senseHat.get_orientation_degrees()
-        self.logger.debug("Orientation_PITCH: " + orientation["pitch"])
+        #self.logger.debug("Orientation_PITCH: " + orientation["pitch"])
 
         return orientation["pitch"]
 
     def getRollDegree(self):
 
         orientation = self.senseHat.get_orientation_degrees()
-        self.logger.debug("Orientation_ROLL: " + orientation["roll"])
+        #self.logger.debug("Orientation_ROLL: " + orientation["roll"])
 
         return orientation["roll"]
 
