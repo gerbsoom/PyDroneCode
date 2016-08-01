@@ -44,6 +44,8 @@ from sense_hat import SenseHat
 senseHat = SenseHat()
 import Visualizer.LedMatrix as LedMatrix
 ledMatrix = LedMatrix.create(senseHat)
+import Sensoric.SensorHat as SensorHat
+sensorHat = SensorHat.create(senseHat)
 
 running = True
 while running:
@@ -57,13 +59,15 @@ while running:
     server.cycle()
 
     # get the current orientation over network api and update view with it
-    #gyro = sensorSenseHat.getOrientationDegrees()
+    gyro = sensorHat.getOrientationDegrees()
     #simulator3D.rotateCubeToDegrees(360.0 - gyro["pitch"],
     #                                360.0 - gyro["yaw"],
     #                                360.0 - gyro["roll"])
+    transmitter.sendData("#DATA#Orientation#" + str(gyro["pitch"]) + "#" +
+                         str(gyro["yaw"]) + "#" + str(gyro["roll"]) + "#")
+
     gameClock.tick(50)
 
-    simulator.cycle()
 
 if __name__ == '__main__':
     main()
