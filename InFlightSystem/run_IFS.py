@@ -63,8 +63,9 @@ while running:
     #simulator3D.rotateCubeToDegrees(360.0 - gyro["pitch"],
     #                                360.0 - gyro["yaw"],
     #                                360.0 - gyro["roll"])
-    transmitter.sendData("#DATA#Orientation#" + str(gyro["pitch"]) + "#" +
-                         str(gyro["yaw"]) + "#" + str(gyro["roll"]) + "#")
+    transmitter.sendData("#DATA#Orientation#" + "%d" % (gyro["pitch"]) + "#" +
+                                                "%d" % (gyro["yaw"]) + "#" +
+                                                "%d" % (gyro["roll"]) + "#")
 
     gameClock.tick(50)
 
