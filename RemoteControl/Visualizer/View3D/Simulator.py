@@ -15,16 +15,15 @@
 from LoggerFactory import LogHandler
 from math import *
 
-import Model as Model
 import ViewPort as ViewPort
 
 
 class Simulator(object):
 
-    def __init__(self, _pygameRef):
+    def __init__(self, _pygameRef, _model):
 
         self.logger = LogHandler.getLogger(__name__)
-        self.model = Model.create()
+        self.model = _model
         self.pygame = _pygameRef
         if self.pygame:
             self.logger.debug("pyGame reference is valid")
@@ -34,25 +33,31 @@ class Simulator(object):
         self.started = False
 
     def start(self):
+        self.viewPort.renderScene()
         drone = []
-        drone.append(self.model.createCube())
+        drone.append(self.model.createCube(20, 20, 20, 10, 10, 150))
         self.model.setDrone(drone)
+        self.model.addObject(self.model.createCube(50, 50, 50, 250, 250, 250))
         self.started = True
+        self.viewPort.renderScene()
+        self.model.debugSzeneGraph(False)
 
     def cycle(self):
         if self.started:
-            self.rotateDrone(0.0001, 0.0001, 0.0001)
+            self.logger.debug("cycling...")
+            self.rotateDrone(10, 0.1, 0.01)
             self.viewPort.renderScene()
+            self.model.debugSzeneGraph(False)
 
     def rotateDrone(self, _angleX, _angleY, _angleZ):
-        for object in self.model.drone:
-            self.model.rotateObject(object, _angleX, _angleY, _angleZ)
+        for element in self.model.drone:
+            self.model.rotateObject(element, _angleX, _angleY, _angleZ)
 
     def rotateDroneToDegrees(self, _rotX, _rotY, _rotZ):
-        for object in self.model.drone:
-            self.model.rotateObjectToDegrees(object, _rotX, _rotY, _rotZ)
+        for element in self.model.drone:
+            self.model.rotateObjectToDegrees(element, _rotX, _rotY, _rotZ)
 
 
-def create(_pygameRef):
-    simulator = Simulator(_pygameRef)
+def create(_pygameRef, _modelRef):
+    simulator = Simulator(_pygameRef, _modelRef)
     return simulator

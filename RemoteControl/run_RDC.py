@@ -28,7 +28,14 @@ logger.debug("Created a global LogHandler.")
 # setup pygame
 import pygame
 from pygame.locals import *
-pygame.init()
+pyGameInit = pygame.init()
+logger.debug("PyGame version: " + pygame.ver)
+logger.debug("-> load " + str(pyGameInit[0]) + " failed " + str(pyGameInit[1]))
+# if sys.platform in ('win32', 'cygwin'):
+#     time_source = None
+# else:
+#     time_source = lambda:pygame.time.get_ticks()/1000.
+
 gameClock = pygame.time.Clock()
 logger.debug("Initialized the pygame engine.")
 
@@ -47,10 +54,14 @@ from Controller import Gamepad
 # and set the Network CMD/DATA-Transmitter
 gamepad = Gamepad.create(pygame, transmitter)
 
+import Model as Model
+model = Model.create()
+
 # setup the 3D Simulator
 import Visualizer.View3D.Simulator as Simulator
-simulator = Simulator.create(pygame)
-#simulator.start()
+simulator = Simulator.create(pygame, model)
+simulator.start()
+# simulator.rotateDroneToDegrees(180, 180, 180)
 
 running = True
 while running:
@@ -72,7 +83,7 @@ while running:
     #simulator3D.rotateCubeToDegrees(360.0 - gyro["pitch"],
     #                                360.0 - gyro["yaw"],
     #                                360.0 - gyro["roll"])
-    gameClock.tick(50)
+    gameClock.tick()
 
     simulator.cycle()
 

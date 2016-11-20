@@ -39,9 +39,10 @@ class Listener:
 
     def openSocket(self):
         try:
-            self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.socket.bind((self.listeningAdress, self.listenerPort))
-            self.socket.listen(5)
+            self.socket = socket.socket()
+            self.socket.bind((self.listenAdress, self.listenerPort))
+            self.socket.listen(1)
+            self.logger.debug("Successfully bound server socket")
 
         except:
             self.logger.warn("Could not open socket for listening!!!")

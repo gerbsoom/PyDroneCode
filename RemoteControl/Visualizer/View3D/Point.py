@@ -83,6 +83,6 @@ class Point(object):
 
     def asString(self):
         """ Returns a short string representation for debuggin purposes. """
-        point = str(self.x) + "," + str(self.Y) + "," + str(self.z)
+        point = str(self.x) + "," + str(self.y) + "," + str(self.z)
 
         return str("Pxyz=(" + point + ")")
