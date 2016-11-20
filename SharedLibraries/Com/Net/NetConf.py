@@ -17,6 +17,7 @@ from LoggerFactory import LogHandler
 import sys
 import os
 import os.path
+# import ConfigParser
 import configparser
 
 
@@ -30,6 +31,7 @@ class NetConf(object):
         if os.path.isfile(_config):
             if os.access(_config, os.R_OK):
                 try:
+                    # config = ConfigParser.RawConfigParser()
                     config = configparser.RawConfigParser()
                     config.read(_config)
                     self.targetLan = config.get("lan", "targetLan")
@@ -42,6 +44,20 @@ class NetConf(object):
 
                 except:
                     print(("ERROR: Parsing config!!! E=", sys.exc_info()[0]))
+                    self.logger.info("Using default values from memory")
+                    self.targetLan = "192.168.1.199"
+                    self.targetWlan = "192.168.23.199"
+                    self.targetPort = 20050
+                    self.listenAdress = "192.168.23.198"
+                    self.listenerPort = 20040
+
+                self.logger.debug("____________________________________")
+                self.logger.debug("Target LAN: " + self.targetLan)
+                self.logger.debug("Target WlAN: " + self.targetWlan)
+                self.logger.debug("Target Port: " + str(self.targetPort))
+                self.logger.debug("Listen Adress: " + self.listenAdress)
+                self.logger.debug("Listener Port: " + str(self.listenerPort))
+                self.logger.debug("____________________________________")
 
             else:
                 print("ERROR: Config exists but is not accessible!!!")

@@ -27,6 +27,7 @@ class Model():
     def __init__(self, _drone=[], _objects=[]):
 
         self.logger = LogHandler.getLogger(__name__)
+        self.logger.debug("Constructing model")
         self.drone = _drone
         self.objects_1D = []
         self.objects_2D = []
@@ -36,8 +37,34 @@ class Model():
             self.addObject(element)
 
     def setDrone(self, _objects=[]):
+        self.drone = []
         for element in _objects:
             self.drone.append(element)
+            if isinstance(element, Point.Point):
+                self.logger.debug("Add Point to drone " + element.asString())
+            elif isinstance(element, Surface.Surface):
+                self.logger.debug("Add Surface to drone" + element.asString())
+            elif isinstance(element, Box.Box):
+                self.logger.debug("Add box to drone " + element.asString())
+            else:
+                self.logger.warn("No instanceOf-checks succeeded!!!")
+
+    def debugSzeneGraph(self, _onlyDrone=True):
+        self.logger.debug("Debugging drone-related model parts")
+        for element in self.drone:
+            element.asString()
+
+        if not _onlyDrone:
+            self.logger.debug("Debugging model parts not containig to drone")
+            for element in self.objects_1D:
+                self.logger.debug("1D objects:")
+                element.asString()
+            for element in self.objects_2D:
+                self.logger.debug("2D objects:")
+                element.asString()
+            for element in self.objects_3D:
+                self.logger.debug("3D objects:")
+                element.asString()
 
     def getSzeneGraph(self):
         szeneGraph = []
@@ -63,7 +90,7 @@ class Model():
             self.logger.debug("Adding Surface " + _object.asString())
         elif isinstance(_object, Box.Box):
             self.objects_3D.append(_object)
-            self.logger.debug("Adding box")
+            self.logger.debug("Adding box " + _object.asString())
         else:
             self.logger.warn("No instanceOf-checks succeeded!!!")
 
@@ -104,20 +131,26 @@ class Model():
 
             _object.rotateObject(needRotationX, needRotationY, needRotationZ)
 
-    def createCube(self, _scaleX=25, _scaleY=25, _scaleZ=25,
-                   _basePosX=240, _basePosY=160, _basePosZ=50):
+    def createCube(self, _scaleX=50, _scaleY=50, _scaleZ=50,
+                   _basePosX=240, _basePosY=240, _basePosZ=240):
         """ Creates a scalable Cube which can be drawn at the ViewPort """
 
+        Px = _basePosX
+        Py = _basePosY
+        Pz = _basePosZ
         # scale the base points in 3 dimensions
-        Px = _basePosX + 1.0 * _scaleX
-        Py = _basePosY + 1.0 * _scaleY
-        Pz = _basePosZ + 1.0 * _scaleZ
-
+        # Px = _basePosX + 1.0 * _scaleX
+        # Py = _basePosY + 1.0 * _scaleY
+        # Pz = _basePosZ + 1.0 * _scaleZ
         # generate the vertex points to define the surfaces with
-        points = [Point.Point(-Px, Py, -Pz), Point.Point(Px, Py, -Pz),
-                  Point.Point(Px, Py, -Pz), Point.Point(-Px, -Py, -Pz),
-                  Point.Point(-Px, Py, Pz), Point.Point(Px, Py, Pz),
-                  Point.Point(Px, -Py, Pz), Point.Point(-Px, -Py, Pz)]
+        # points = [Point.Point(-Px, Py, -Pz), Point.Point(Px, Py, -Pz),
+        #          Point.Point(Px, Py, -Pz), Point.Point(-Px, -Py, -Pz),
+        #          Point.Point(-Px, Py, Pz), Point.Point(Px, Py, Pz),
+        #          Point.Point(Px, -Py, Pz), Point.Point(-Px, -Py, Pz)]
+        points = [Point.Point(Px-_scaleX, Py+_scaleY, Pz-_scaleZ), Point.Point(Px+_scaleX, Py+_scaleY, Pz-_scaleZ),
+                  Point.Point(Px+_scaleX, Py+_scaleY, Pz-_scaleZ), Point.Point(Px-_scaleX, Py-_scaleY, Pz-_scaleZ),
+                  Point.Point(Px-_scaleX, Py+_scaleY, Pz+_scaleZ), Point.Point(Px+_scaleX, Py+_scaleY, Pz+_scaleZ),
+                  Point.Point(Px+_scaleX, Py-_scaleY, Pz+_scaleZ), Point.Point(Px-_scaleX, Py-_scaleY, Pz+_scaleZ)]
 
         # construct all cube surfaces from these areas raw data
         areaData = [(points[0], points[1], points[2], points[3]),
