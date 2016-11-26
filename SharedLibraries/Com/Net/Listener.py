@@ -19,7 +19,7 @@ import sys
 from Com.Net import ClientTH
 
 
-class Listener:
+class Listener(object):
 
     def __init__(self, _netConf):
 

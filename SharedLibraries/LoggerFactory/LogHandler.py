@@ -59,6 +59,7 @@ def initialize(_logConfig="_log.conf"):
     global loggerInstance
     if not loggerInstance:
         loggerInstance = LogHandler(_logConfig)
+        print("LogHandler (singleton) instance created")
 
 
 def getLogger(_name=""):
