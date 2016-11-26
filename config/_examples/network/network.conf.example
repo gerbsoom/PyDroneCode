@@ -1,0 +1,10 @@
+[network]
+config = "config/drone-device/network.conf"
+listenerList = "[(listenAdress1:listenerPort1)|...|(listenAdress:listenerPortN)]"
+listenAdress = "192.168.1.132"
+listenerPort = 20040
+targetList = "[(targetAdress1:listenerPort1)|...|(targetAdress:listenerPort)N]"
+targetAdress = "192.168.1.132"
+targetPort = 20050
+accessLevel = "192.168.1"
+gpioPins = "[]"

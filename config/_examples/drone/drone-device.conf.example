@@ -1,0 +1,77 @@
+[drone_device]
+configDir = "config/drone-device/"
+logConfig = "config/drone-device/log.conf"
+# gpio-controller, um über die PINS simple Schaltvorgänge zu handeln
+controller = "[network]"
+motorList = "[motor_1_VL,motor_2_VR,motor_3_HL,motor_4_HR]"
+sensorList = "[sensorhat]"
+visualizer = "[ledmatrix]"
+
+[gyroscope]
+#define all alarms to trigger by 2-3% off the parameter range and increase the motor throttle to invert the effect
+alarm "[rotSpeedX>10 cmd:exec(increaseMotorThrottle(motor_1_VL,motor_3_VR),additionalValues=(rotSpeedY,rotSpeedZ))]"
+
+[commands]
+commandConf = "config/commands.conf"
+command="cmd:discoverNetwork"
+
+[commands_generic]
+commandConf = "config/generic-commands.conf"
+
+[colors]
+colorList = "[blue,red,black,white]"
+color_blue = "0,0,255"
+color_red = "255,0,0"
+color_black = "0,0,0"
+color_white = "255,255,255"
+
+[controller_network]
+config = "config/drone-device/network.conf"
+listenerList = "[(listenAdress1:listenerPort1)|...|(listenAdress:listenerPortN)]"
+listenAdress = "192.168.1.132"
+listenerPort = 20040
+targetList = "[(targetAdress1:listenerPort1)|...|(targetAdress:listenerPort)N]"
+targetAdress = "192.168.1.132"
+targetPort = 20050
+accessLevel = "192.168.1"
+gpioPins = "[]"
+
+# default is to use the target(s) configured in the network controller
+[sensor_sensorhat]
+config = "config/drone-device/sensor_sensorhat.conf"
+notificationTargetAdress = "192.168.1.132"
+notificationTargetPort = 20050
+accessLevel = "192.168.1.0"
+gpioPins = "[]"
+alarms = "[rotSpeed>50 cmd:exec(commandName,currentValue=88,additionalValues=(getRotAngleX,getRotAngleX))]"
+completeCommandList = "[accessAllowed,commandAvailable(cmdName),getCompleteCommandList,getSensorCommandList]"
+sensorCommandList = "[getRotAngleX,getRotAngleY,getRotAngleZ,getAccDirX,getAccDirY,getAccDirZ,getRotSpeedX,getRotSpeedY,getRotSpeedZ,getTempDigit,getTempAnalog]"
+
+[visualizer_ledmatrix]
+config = "config/drone-device/visualizer_ledmatrix.conf"
+accessLevel = "localhost"
+gpioPins = "[]"
+numRow = 9
+numCol = 9
+colorDepth = 24
+visualizerCommandList = "[setLED(x,y,blue),setText(text),setBgColor(black),showLTX(ltValX),...,showRTY(ltValY),...]"
+
+[motor_motor_1_VL]
+accessLevel = "localhost"
+gpioPins = "[escPWM_1_VL_#14]"
+config = "config/drone-device/drone-device_motor_1_vl.conf"
+
+[motor_motor_2_VR]
+accessLevel = "localhost"
+gpioPins = "[escPWM_2_VR_#15]"
+config = "config/drone-device/drone-device_motor_2_vr.conf"
+
+[motor_motor_3_HL]
+accessLevel = "localhost"
+gpioPins = "[escPWM_3_HL_#16]"
+config = "config/drone-device/drone-device_motor_3_hl.conf"
+
+[motor_motor_4_HR]
+accessLevel = "localhost"
+gpioPins = "[escPWM_4_HRS_#14]"
+config = "config/drone-device/drone-device_motor_4_hr.conf"
