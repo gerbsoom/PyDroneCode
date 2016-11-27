@@ -21,12 +21,13 @@ import os
 import sys
 
 # adppend lib includes to module loading path
+sys.path.insert(0, "SharedLibraries/")
 sys.path.insert(0, "launcher/")
 sys.path.insert(0, "lib/")
 
 # setup logging from config
 from LoggerFactory import LogHandler
-LogHandler.initialize("_log.conf")
+LogHandler.initialize("/config/dronelog.conf")
 logger = LogHandler.getLogger("Launcher")
 #logger.debug("Created a global LogHandler.")
 
