@@ -22,8 +22,7 @@ import configparser
 
 
 class ConfigLoader(object):
-    """ Offers functioniality to convert config objects, files and strings. """
-
+    """ Offers the functioniality to load and write config objects """
     def __init__(self):
         self.loadedConfig = 0
         self.logger = LogHandler.getLogger(__name__)

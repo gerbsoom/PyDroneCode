@@ -84,4 +84,3 @@ while running:
                                                 "%d" % (gyro["roll"]) + "#")
 
     gameClock.tick(50)
-
